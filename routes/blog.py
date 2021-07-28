@@ -15,6 +15,7 @@ async def find_all_blogs():
     return blogsEntity(conn.local.blog.find())
 
 
+
 @blog.post('/')
 async def create_blog(blog: Blog):
     conn.local.blog.insert_one(dict(blog))
@@ -24,3 +25,12 @@ async def create_blog(blog: Blog):
 @blog.get('/{id}')
 async def find_one_blog(id):
     return blogEntity(conn.local.blog.find_one({"_id":ObjectId(id)}))   
+     
+
+
+@blog.put('/{id}')
+async def update_blog(id,blog: Blog):
+    conn.local.blog.find_one_and_update({"_id":ObjectId(id)}, {
+        "$set":dict(blog)
+    })
+    return blogEntity(conn.local.blog.find_one({"_id":ObjectId(id)}))    

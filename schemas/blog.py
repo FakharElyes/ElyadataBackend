@@ -4,7 +4,9 @@ def blogEntity(item) -> dict:
         "title":item["title"],
         "content":item["content"],
         "author":item["author"],
-        "vote":item["vote"]
+        "upvote":item["upvote"],
+        "downvote":item["downvote"]
+
     }
 
 

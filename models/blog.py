@@ -4,4 +4,5 @@ class Blog(BaseModel):
     title: str
     content: str
     author: str
-    vote: str
+    upvote: str
+    downvote: str
